@@ -1,0 +1,10 @@
+<h1> E-commerce App </h1>
+
+<%if @warehouses.any? %>
+  <% @warehouses.each do |w| %>
+    <%= w["name"] %>
+    <%= w["cod"] %>
+  <% end %>
+<% else %>
+ <p>Nenhum galpão encontrado<p>
+<% end %>

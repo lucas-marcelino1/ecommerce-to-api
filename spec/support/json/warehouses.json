@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "São Miguel",
+    "city": "Blumenau",
+    "cod": "SMB",
+    "area": 5000,
+    "address": "Rua Benjamin Constant, 105",
+    "description": "Galpão da transportadora São Miguel em Blumenau",
+    "cep": "89026-200"
+  },
+  {
+    "id": 2,
+    "name": "Santa Maria",
+    "city": "Rio dos Anjos",
+    "cod": "SMA",
+    "area": 15000,
+    "address": "Rua Bernardino, 540",
+    "description": "Galpão de Santa Maria",
+    "cep": "89026-200"
+  }
+]
