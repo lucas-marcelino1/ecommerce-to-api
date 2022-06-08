@@ -31,4 +31,43 @@ describe 'Usuário acessa a página inicial' do
     expect(page).to have_content("Nenhum galpão encontrado")
    
   end
+
+  it 'e ve detalhes de um galpão' do
+
+    json_warehouses_data = File.read(Rails.root.join('spec/support/json/warehouses.json'))
+    fake_response = double("faraday_response", status: 200, body: json_warehouses_data)
+    allow(Faraday).to receive(:get).with("http://localhost:4000/api/v1/warehouses").and_return(fake_response)
+
+    json_warehouse = File.read(Rails.root.join('spec/support/json/warehouse.json'))
+    fake_response = double("faraday_response", status: 200, body: json_warehouse)
+    allow(Faraday).to receive(:get).with("http://localhost:4000/api/v1/warehouses/1").and_return(fake_response)
+
+    visit(root_path)
+    click_on('São Miguel')
+
+    expect(current_path).to eq(warehouse_path(1))
+    expect(page).to have_content('Detalhes do Galpão São Miguel')
+    expect(page).to have_content('São Miguel')
+    expect(page).to have_content('Blumenau')
+    expect(page).to have_content('Rua Benjamin Constant, 105 - CEP: 89026-200')
+    expect(page).to have_content('5000 m²')
+
+  end
+
+  it 'e não é possível carregar o galpão' do
+
+    json_warehouses_data = File.read(Rails.root.join('spec/support/json/warehouses.json'))
+    fake_response = double("faraday_response", status: 200, body: json_warehouses_data)
+    allow(Faraday).to receive(:get).with("http://localhost:4000/api/v1/warehouses").and_return(fake_response)
+
+    error_response = double("faraday_response", status: 500, body: "{}")
+    allow(Faraday).to receive(:get).with("http://localhost:4000/api/v1/warehouses/1").and_return(error_response)
+
+    visit(root_path)
+    click_on('São Miguel')
+
+    expect(current_path).to eq(root_path)
+    expect(page).to have_content('Não foi possível carregar o galpão')
+   
+  end
 end

@@ -1,8 +1,9 @@
 <h1> E-commerce App </h1>
 
+
 <%if @warehouses.any? %>
   <% @warehouses.each do |w| %>
-    <%= w["name"] %>
+    <%= link_to w["name"], warehouse_path(w["id"]) %>
     <%= w["cod"] %>
   <% end %>
 <% else %>

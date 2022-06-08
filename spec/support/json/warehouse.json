@@ -1,0 +1,10 @@
+{
+  "id": 1,
+  "name": "São Miguel",
+  "city": "Blumenau",
+  "cod": "SMB",
+  "area": 5000,
+  "address": "Rua Benjamin Constant, 105",
+  "description": "Galpão da transportadora São Miguel em Blumenau",
+  "cep": "89026-200"
+}
