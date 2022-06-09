@@ -3,8 +3,8 @@
 
 <%if @warehouses.any? %>
   <% @warehouses.each do |w| %>
-    <%= link_to w["name"], warehouse_path(w["id"]) %>
-    <%= w["cod"] %>
+    <%= link_to w.name, warehouse_path(w.id) %>
+    <%= w.cod %>
   <% end %>
 <% else %>
  <p>Nenhum galpão encontrado<p>
